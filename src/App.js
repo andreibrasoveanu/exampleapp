@@ -1,0 +1,66 @@
+import React, { Component } from 'react';
+import Authentication from './components/Authentication';
+import GetData from './components/GetData';
+import DemoAppGuide from './components/DemoAppGuide';
+
+import './App.css';
+
+class App extends Component {
+  constructor(props) {
+    super(props);
+    // Authentication tokens for connecting to cloud elements
+    // This tokens are specific to the current user
+    // In this case will just hard code these values as an example user
+    // You can find these values under the secrets tab in the console
+    this.state = {
+      // Cloud Element authentication tokens
+      orgToken: '',
+      userToken: '',
+      // Vendor specific values, these come from your registered application
+      vendorApiKey: '',
+      vendorSecret: '',
+      // Token used to access the create element instance
+      // No need to set this, it will be set dynamically
+      elementToken: '',
+    }
+  }
+
+  // Helper Function
+  setElementToken(token) {
+    this.setState({
+      elementToken: token
+    })
+  }  
+
+  render() {
+    let { userToken, orgToken, elementToken, vendorSecret, vendorApiKey} = this.state;
+    return (
+      <div className='App'>
+        <div className='pageHeading'> Cloud Elements Demo App </div>
+        {/* Instructions on how to use this app, you can ignore this */}
+        <DemoAppGuide 
+          vendorSecret={ vendorSecret }
+          vendorApiKey={ vendorApiKey }
+          orgToken={ orgToken } 
+          userToken={ userToken } />
+        {/* Step 3 of the process, contains all the logic for
+          authenticating an instance of Salesforce */} 
+        {/* vendorSecret, vendorApiKey, orgToken, and userToken are all required for 
+            authentication to salesforce*/}
+        {/* The other two values are used to retrieve the element token from the authentication*/} 
+        <Authentication 
+          vendorSecret={ vendorSecret }
+          vendorApiKey={ vendorApiKey }
+          orgToken={ orgToken } 
+          userToken={ userToken } 
+          elementToken={ elementToken}
+          setElementToken={ token => this.setElementToken(token) }
+        />
+        {/* Step 4, contains all the logic to pull data from the element instance*/} 
+        <GetData orgToken={ orgToken } userToken={ userToken } elementToken={ elementToken }/>
+      </div>
+    );
+  }
+}
+
+export default App;
