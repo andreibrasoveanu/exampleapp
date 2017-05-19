@@ -13,7 +13,7 @@ class DemoAppGuide extends Component {
       <div>
         <div className='card'>
           <div className='heading'> 
-            <Check fill={vendorApiKey && vendorSecret ? '#68B244' : '#aeaeae'}/> 
+            <Check fill={vendorApiKey && vendorSecret ? '#68B244' : '#fff'}/> 
             1. Register an App with Salesforce: 
           </div>
           <ul>
@@ -33,7 +33,7 @@ class DemoAppGuide extends Component {
         </div>
         <div className='card'>
           <div className='heading'> 
-            <Check fill={userToken && orgToken ? '#68B244' : '#aeaeae'}/> 
+            <Check fill={userToken && orgToken ? '#68B244' : '#fff'}/> 
             2. Cloud Elements Authentication
           </div>
           <ul>

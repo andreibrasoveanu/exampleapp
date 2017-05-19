@@ -102,7 +102,7 @@ class Authentication extends Component {
     return(
       <div className='card'>
         <div className='heading'> 
-          <Check fill={elementToken ? '#68B244' : '#aeaeae'}/> 
+          <Check fill={elementToken ? '#68B244' : '#fff'}/> 
           3. Authenticate With Salesforce
         </div>
         <button className='button' onClick={function() {
