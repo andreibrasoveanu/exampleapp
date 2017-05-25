@@ -14,14 +14,14 @@ class GetData extends Component {
   }
 
   listResources() {
-    let {userToken, orgToken} = this.props;
+    let {userToken, orgToken, elementToken} = this.props;
     let baseUrl = 'https://api.cloud-elements.com/elements/api-v2';
-    let path= 'MyContact';
-    // The b
+    let path= 'contacts';
+    // The configuration for fetching data
     let config = {
       method: 'GET',
       headers: {
-        'Authorization': `User ${userToken}, Organization ${orgToken}, Element RP5PS0slJltwMTb/jR8WI99+o8CLQ8v/9w4m+94kFO4=`,
+        'Authorization': `User ${userToken}, Organization ${orgToken}, Element ${elementToken}`,
         'Content-Type': 'application/json'
       }
     }
@@ -39,7 +39,7 @@ class GetData extends Component {
     let data = resources ? resources : {};
     let columns = [{Header: 'FirstName', accessor: 'FirstName' },
      {Header: 'LastName', accessor: 'LastName' }, 
-     {Header: 'email', accessor: 'email' }
+     {Header: 'Email', accessor: 'Email' }
     ];
     return(
       <div>

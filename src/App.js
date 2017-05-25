@@ -19,9 +19,6 @@ class App extends Component {
       // Vendor specific values, these come from your registered application
       vendorApiKey: '',
       vendorSecret: '',
-      // Token used to access the create element instance
-      // No need to set this, it will be set dynamically
-      elementToken: '',
     }
   }
 
