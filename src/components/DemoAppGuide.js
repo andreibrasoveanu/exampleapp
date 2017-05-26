@@ -24,7 +24,8 @@ class DemoAppGuide extends Component {
               </a>
             </li>
             <li>
-              Be sure to register this callback url: <b>{process.env.NGROK}</b>
+              Be sure to register this callback url: <b>{process.env.NGROK} </b>
+              (You will need to reregister this url everytime you restart the app)
             </li>
             <li>
               Under <b> src > App.js </b> set the vendorApiKey and vendorSecret
