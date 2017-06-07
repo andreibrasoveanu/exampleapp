@@ -14,7 +14,7 @@ class DemoAppGuide extends Component {
         <div className='card'>
           <div className='heading'> 
             <Check fill={vendorApiKey && vendorSecret ? '#68B244' : '#fff'}/> 
-            1. Register an App with Salesforce: 
+            1. Register an App with Salesforce 
           </div>
           <ul>
             <li> The first step is to register an application with salesforce </li>
