@@ -5,6 +5,8 @@ import 'react-table/react-table.css'
 import './styles/master.css';
 import './styles/getdata.css';
 
+import Check from './icons/Icons';
+
 class GetData extends Component {
 
   constructor(props) {
@@ -36,6 +38,7 @@ class GetData extends Component {
 
   render() {
     let { resources } = this.state;
+    let { elementToken } = this.props;
     let data = resources ? resources : {};
     let columns = [{Header: 'FirstName', accessor: 'FirstName' },
      {Header: 'LastName', accessor: 'LastName' }, 
@@ -44,7 +47,8 @@ class GetData extends Component {
     return(
       <div>
         <div className='card'>
-          <h3>4. Pull Data from the Vendor </h3>
+          <div className='heading'> <Check fill={elementToken ? '#fff' : '#fff'}/> 
+            4. Pull Data from the Vendor </div>
           <div> Retrieve data</div>
           <button onClick={this.listResources}> Pull Data </button>
         </div>
