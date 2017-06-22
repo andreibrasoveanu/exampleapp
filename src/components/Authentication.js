@@ -78,7 +78,11 @@ class Authentication extends Component {
     fetch(`${baseUrl}/${path}`, config)
       .then(response => response.json())
       .then(responseJson => {
-        this.props.setElementToken(responseJson.token);
+          if (responseJson.message){
+            this.props.setErrorMessage(responseJson.message);
+          } else {
+            this.props.setElementToken(responseJson.token);
+          }
       })
   }
 
@@ -98,7 +102,7 @@ class Authentication extends Component {
   // This is the html code that renders in the browser
   render() {
     let { redirectUrl } = this.state;
-    let { elementToken } = this.props;
+    let { elementToken, errorMessage } = this.props;
     return(
       <div className='card'>
         <div className='heading'> 
@@ -110,6 +114,9 @@ class Authentication extends Component {
         }}> 
         Add salesforce integration 
         </button>
+        <div className='error'>
+            <p> {errorMessage} </p>
+        </div>
       </div>
     )
   }

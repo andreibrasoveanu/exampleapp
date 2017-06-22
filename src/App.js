@@ -27,10 +27,17 @@ class App extends Component {
     this.setState({
       elementToken: token
     })
-  }  
+  }
+
+  // Error handling
+  setErrorMessage(message) {
+    this.setState({
+        errorMessage: message
+    })  
+  } 
 
   render() {
-    let { userToken, orgToken, elementToken, vendorSecret, vendorApiKey} = this.state;
+    let { userToken, orgToken, elementToken, vendorSecret, vendorApiKey, errorMessage} = this.state;
     return (
       <div className='App'>
         <div className='pageHeading'> Cloud Elements Demo App </div>
@@ -50,8 +57,10 @@ class App extends Component {
           vendorApiKey={ vendorApiKey }
           orgToken={ orgToken } 
           userToken={ userToken } 
-          elementToken={ elementToken}
+          elementToken={ elementToken }
           setElementToken={ token => this.setElementToken(token) }
+          errorMessage={ errorMessage }
+          setErrorMessage={ message => this.setErrorMessage(message) }
         />
         {/* Step 4, contains all the logic to pull data from the element instance*/} 
         <GetData orgToken={ orgToken } userToken={ userToken } elementToken={ elementToken }/>
